@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.template.api.dto.ItemDTO;
-import com.template.api.dto.ItemResponseDTO;
 import com.template.api.entity.Item;
 import com.template.api.mapper.ItemMapper;
 import com.template.api.repository.ItemRepository;
@@ -21,7 +20,7 @@ public class ItemService {
 	 * @param id
 	 * @return
 	 */
-	public ItemResponseDTO findById(Integer id) {
+	public ItemDTO findById(Long id) {
 		final Optional<Item> optional = this.itemRepository.findById(id);
 		
 		if (optional.isEmpty()) {
@@ -36,8 +35,8 @@ public class ItemService {
 	 * @param itemDTO
 	 * @return
 	 */
-	public ItemResponseDTO save(ItemDTO itemDTO) {
-		Item item = ItemMapper.INSTANCE.itemDTOtoItem(itemDTO);
+	public ItemDTO save(ItemDTO itemDTO) {
+		Item item = ItemMapper.INSTANCE.itemResponseDTOtoItem(itemDTO);
 		
 		return ItemMapper.INSTANCE.itemToItemResponseDTO(this.itemRepository.save(item));
 	}

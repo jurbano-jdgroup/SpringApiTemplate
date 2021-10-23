@@ -18,15 +18,16 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name="items")
-public class Item {
+@Table(name="users")
+public class User {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 	@NotBlank
 	private String name;
 	@NotBlank
-	private String description;
+	private String surname;
+	
 	@CreationTimestamp
 	private Date creationDate;
 	@UpdateTimestamp

@@ -8,28 +8,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.template.api.dto.ItemDTO;
 import com.template.api.dto.ResponseDTO;
-import com.template.api.service.ItemService;
+import com.template.api.dto.UserDTO;
+import com.template.api.service.UserService;
 
 @RestController
-@RequestMapping("/items")
-public class ItemsController extends ErrorController {
-	
+@RequestMapping("/users")
+public class UserController extends ErrorController {	
 	@Autowired
-	private ItemService itemService;
+	private UserService userService;
 	
 	@GetMapping("/{id}")
-	public ResponseDTO findItemById(@PathVariable(value="id") Long id) {
+	public ResponseDTO getById(@PathVariable(value="id") Long id) {
 		ResponseDTO responseDTO = new ResponseDTO();
-		responseDTO.setResponse(this.itemService.findById(id));
+		responseDTO.setResponse(this.userService.findById(id));
 		return responseDTO;
 	}
 	
 	@PostMapping("/")
-	public ResponseDTO save(@RequestBody ItemDTO item) {
+	public ResponseDTO save(@RequestBody UserDTO user) {
 		ResponseDTO responseDTO = new ResponseDTO();
-		responseDTO.setResponse(this.itemService.save(item));
+		responseDTO.setResponse(this.userService.save(user));
 		return responseDTO;
 	}
 }
