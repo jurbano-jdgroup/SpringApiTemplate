@@ -26,6 +26,13 @@ public class PurchaseController extends ErrorController {
 		return response;
 	}
 	
+	@GetMapping("/")
+	public ResponseDTO getAll() {
+		ResponseDTO response  = new ResponseDTO();
+		response.setResponse(this.purchaseService.findAll());
+		return response;
+	}
+	
 	@GetMapping("/{id}")
 	public ResponseDTO findById(@PathVariable(value="id") Long id) {
 		ResponseDTO response  = new ResponseDTO();

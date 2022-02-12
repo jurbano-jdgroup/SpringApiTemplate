@@ -1,5 +1,7 @@
 package com.template.api.mapper;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -12,4 +14,5 @@ public interface ItemMapper {
 
 	Item itemResponseDTOtoItem(ItemDTO item);
 	ItemDTO itemToItemResponseDTO(Item item);
+	List<ItemDTO> itemListToItemDTOList(List<Item> itemList);
 }

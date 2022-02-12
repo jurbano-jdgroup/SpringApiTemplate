@@ -26,6 +26,13 @@ public class ItemsController extends ErrorController {
 		return responseDTO;
 	}
 	
+	@GetMapping("/")
+	public ResponseDTO findAll() {
+		ResponseDTO responseDTO = new ResponseDTO();
+		responseDTO.setResponse(this.itemService.findAll());
+		return responseDTO;
+	}
+	
 	@PostMapping("/")
 	public ResponseDTO save(@RequestBody ItemDTO item) {
 		ResponseDTO responseDTO = new ResponseDTO();

@@ -1,5 +1,6 @@
 package com.template.api.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +24,15 @@ public class ItemService {
 	public ItemDTO findById(Long id) {
 		final Optional<Item> optional = this.itemRepository.findById(id);
 		
-		if (optional.isEmpty()) {
+		if (!optional.isPresent()) {
 			return null;
 		}
 		
 		return ItemMapper.INSTANCE.itemToItemResponseDTO(optional.get());
+	}
+	
+	public List<ItemDTO> findAll() {
+		return ItemMapper.INSTANCE.itemListToItemDTOList(this.itemRepository.findAll());
 	}
 	
 	/**

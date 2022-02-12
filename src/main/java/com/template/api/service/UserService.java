@@ -1,5 +1,6 @@
 package com.template.api.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +24,15 @@ public class UserService {
 	public UserDTO findById(Long id) {
 		final Optional<User> optional = this.userRepository.findById(id);
 		
-		if (optional.isEmpty()) {
+		if (!optional.isPresent()) {
 			return null;
 		}
 		
 		return UserMapper.INSTANCE.userToUserDTO(optional.get());
+	}
+	
+	public List<UserDTO> findAll() {
+		return UserMapper.INSTANCE.userListToUserDTOList(this.userRepository.findAll());
 	}
 	
 	/**

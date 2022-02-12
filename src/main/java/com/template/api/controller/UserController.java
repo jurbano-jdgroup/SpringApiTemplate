@@ -25,6 +25,13 @@ public class UserController extends ErrorController {
 		return responseDTO;
 	}
 	
+	@GetMapping("/")
+	public ResponseDTO getAll() {
+		ResponseDTO responseDTO = new ResponseDTO();
+		responseDTO.setResponse(this.userService.findAll());
+		return responseDTO;
+	}
+	
 	@PostMapping("/")
 	public ResponseDTO save(@RequestBody UserDTO user) {
 		ResponseDTO responseDTO = new ResponseDTO();

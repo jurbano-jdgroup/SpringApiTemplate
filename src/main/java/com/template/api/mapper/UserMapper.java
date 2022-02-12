@@ -1,5 +1,7 @@
 package com.template.api.mapper;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -12,4 +14,5 @@ public interface UserMapper {
 
 	User userDTOtoUser(UserDTO user);
 	UserDTO userToUserDTO(User user);
+	List<UserDTO> userListToUserDTOList(List<User> userList);
 }

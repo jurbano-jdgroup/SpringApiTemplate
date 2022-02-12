@@ -1,5 +1,7 @@
 package com.template.api.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +18,13 @@ public class PurchaseService {
 	public Purchase findById(Long id) {
 		return this.purchaseRepository.findPurchaseByIdAny(id);
 	}
-	
+
 	public PurchaseDTO save(PurchaseDTO purchaseDTO) {
 		Purchase purchase = PurchaseMapper.INSTANCE.purchaseDTOToPurchase(purchaseDTO);
 		return PurchaseMapper.INSTANCE.purchaseToPurchaseDTO(this.purchaseRepository.save(purchase));
+	}
+	
+	public List<PurchaseDTO> findAll() {
+		return PurchaseMapper.INSTANCE.purchaseListToDTOList(this.purchaseRepository.findAll());
 	}
 }

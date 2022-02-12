@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -31,13 +31,13 @@ public class Purchase {
 	private Long id;
 	
 	@NotNull
-	@OneToOne(cascade=CascadeType.MERGE)
-	@JoinColumn(name="userId", referencedColumnName="id")
+	@ManyToOne(cascade=CascadeType.MERGE)
+	@JoinColumn(name="user_id", referencedColumnName="id")
 	private User user;
 	
 	@NotNull
-	@OneToOne(cascade=CascadeType.MERGE)
-	@JoinColumn(name="itemId", referencedColumnName="id")	
+	@ManyToOne(cascade=CascadeType.MERGE)
+	@JoinColumn(name="item_id", referencedColumnName="id")	
 	private Item item;
 	
 	@Column(name="creation_date")
